@@ -1,6 +1,6 @@
 import { BaseApiT } from "@/lib/api"
 import { Button } from "@/components/ui/button"
-import { getPokemon, PokemonT } from "@/lib/api"
+import { getPokemon, PokemonT, nullPokemon } from "@/lib/api"
 
 type Props = {
   listaPokemon: BaseApiT[] | null
@@ -14,10 +14,19 @@ function PokemonList({
   setIsLoading,
 }: Props) {
   const handlePokemonSelect = async (enlace: string) => {
-    setIsLoading(true)
-    const pokemonInfo = await getPokemon(enlace)
-    setDetailedPokemon(pokemonInfo)
-    setIsLoading(false)
+    try {
+      setIsLoading(true)
+      const pokemonInfo = await getPokemon(enlace)
+      setDetailedPokemon(pokemonInfo)
+    } catch (error) {
+      setDetailedPokemon(nullPokemon)
+      console.warn(
+        "Ocurrio un error, no se pudo obtener la informacion del Pokemon",
+        error,
+      )
+    } finally {
+      setIsLoading(false)
+    }
     //Por si quieren probar el skeleton con calma
 
     // setTimeout(() => {

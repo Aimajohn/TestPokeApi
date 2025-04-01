@@ -12,20 +12,24 @@ import { useState } from "react"
 
 function PokemonCard({ detailedPokemon, isLoading }: Props) {
   const [isImgLoading, SetisImgLoading] = useState(false)
-  if (!detailedPokemon) {
+  if (!detailedPokemon || !detailedPokemon.name) {
     return (
       <div className="flex aspect-[3/4] h-auto w-[350px] items-center justify-center gap-2 rounded-md border-2 border-slate-300 bg-slate-50/30 px-6 py-4 shadow-sm">
         <b className="text-2xl text-blue-400">
           <FaArrowCircleLeft />
-        </b>{" "}
-        <span>Selecciona un Pokemon de la Lista</span>
+        </b>
+        <span>
+          {!detailedPokemon
+            ? "Selecciona un Pokemon de la Lista"
+            : "Lo siento hubo un error al cargar la información del Pokemon, intenta seleccionar otro."}{" "}
+        </span>
       </div>
     )
   }
   return (
     <Card className="aspect-[3/4] h-auto w-[350px] border-2 border-slate-300 bg-slate-50/30">
       <SkeletonCard isLoading={isLoading} />
-      {!isLoading && (
+      {!isLoading && detailedPokemon.name && (
         <>
           <CardHeader>
             <CardTitle>{detailedPokemon.name.toUpperCase()}</CardTitle>

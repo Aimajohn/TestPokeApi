@@ -9,10 +9,13 @@ import Header from "./components/Header"
 
 function App() {
   const [listaPokemon, setListaPokemon] = useState<BaseApiT[] | null>(null)
+  //Actualizar la carta de Pokemon seleccionado
   const [detailedPokemon, setDetailedPokemon] = useState<PokemonT | null>(null)
+  //Para llevar el estado de carga de los llamados a api
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    //Aqui se llama para la obtener la lista principal
     try {
       const getInfo = async () => {
         const tempList = await getPokemonList()
