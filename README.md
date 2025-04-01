@@ -11,6 +11,7 @@ Puedes ver el proyecto en
 ## Versiones de Node y npm
 
 Node v22.14.0
+
 npm v11.2.0
 
 ## Pasos para inicializar en local
