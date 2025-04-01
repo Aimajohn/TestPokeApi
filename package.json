@@ -2,12 +2,15 @@
   "name": "testpokeapi",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://github.com/Aimajohn/TestPokeApi",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "lint": "eslint \"*/**/*.{js,ts,tsx}\" --quiet --fix",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.2",
