@@ -34,30 +34,29 @@ function PokemonList({
     // }, 500)
   }
 
+  if (!listaPokemon) {
+    return (
+      <span>
+        Lo siento, hubo un error. No pudimos obtener la lista de Pokémons.
+      </span>
+    )
+  }
+
   return (
     <div>
-      {/* Caso Error */}
-      {!listaPokemon && (
-        <span>
-          Lo siento, hubo un error. No pudimos obtener la lista de Pokémons.
-        </span>
-      )}
-      {/* Caso Exito */}
-      {listaPokemon && (
-        <ul>
-          {listaPokemon.map((pokemon) => (
-            <li key={pokemon.name}>
-              <Button
-                onClick={() => handlePokemonSelect(pokemon.name)}
-                variant="link"
-                className="cursor-pointer"
-              >
-                {pokemon.name.toLocaleUpperCase()}
-              </Button>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul>
+        {listaPokemon.map((pokemon) => (
+          <li key={pokemon.name}>
+            <Button
+              onClick={() => handlePokemonSelect(pokemon.name)}
+              variant="link"
+              className="cursor-pointer"
+            >
+              {pokemon.name.toLocaleUpperCase()}
+            </Button>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

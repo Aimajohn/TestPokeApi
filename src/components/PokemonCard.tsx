@@ -12,6 +12,7 @@ import { useState } from "react"
 
 function PokemonCard({ detailedPokemon, isLoading }: Props) {
   const [isImgLoading, SetisImgLoading] = useState(false)
+
   if (!detailedPokemon || !detailedPokemon.name) {
     return (
       <div className="flex aspect-[3/4] h-auto w-[350px] items-center justify-center gap-2 rounded-md border-2 border-slate-300 bg-slate-50/30 px-6 py-4 shadow-sm">
@@ -56,6 +57,7 @@ function PokemonCard({ detailedPokemon, isLoading }: Props) {
               <div className="flex gap-2">
                 {detailedPokemon.types.map(({ type }) => (
                   <Badge
+                    key={type.name}
                     className={`${typeColors[type.name] || "bg-gray-400 text-slate-900"} `}
                     id={type.name}
                   >
@@ -64,7 +66,7 @@ function PokemonCard({ detailedPokemon, isLoading }: Props) {
                 ))}
               </div>
             </div>
-          </CardContent>{" "}
+          </CardContent>
         </>
       )}
     </Card>

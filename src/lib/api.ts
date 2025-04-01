@@ -37,7 +37,7 @@ export const nullPokemon = {
   abilities: [] as BaseApiT[],
 }
 
-//Definir los colores para los tipos
+//Definir los colores para diferentes tipos de pokemon
 export const typeColors: Record<string, string> = {
   normal: "bg-gray-400/50",
   fire: "bg-red-500/50",
@@ -72,6 +72,5 @@ export const getPokemonList = async (page: number = 0): Promise<BaseApiT[]> => {
 
 export const getPokemon = async (name: string): Promise<PokemonT> => {
   const miData = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-  console.log(miData.data)
   return miData.data
 }

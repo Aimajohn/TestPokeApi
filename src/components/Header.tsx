@@ -8,7 +8,12 @@ function Header({}: Props) {
         src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
         alt=""
       />
-      <h1 className="font-semibold text-slate-200">Test PokeApi</h1>
+      <h1 className="relative w-full font-semibold text-slate-200">
+        Test PokeApi{" "}
+        <span className="text-md absolute ml-2 block text-xs font-light text-slate-300">
+          Hecho por John Rodriguez
+        </span>
+      </h1>
     </header>
   )
 }
